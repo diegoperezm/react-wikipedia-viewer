@@ -18,6 +18,14 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setData = this.setData.bind(this);
+  }
+
+  setData(data) {
+    this.setState({
+      link: data[3],
+      description: data[2]
+    });
   }
 
   handleChange(event) {
@@ -27,8 +35,7 @@ class App extends Component {
   handleSubmit(event) {
     fetch(`${ENDPOINT}${ORIGIN}${FORMAT}${ACTION}${WORD}`)
       .then(res => res.json())
-      .then();
-
+      .then(data => this.setData(data));
     event.preventDefault();
   }
 
