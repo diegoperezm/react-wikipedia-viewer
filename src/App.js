@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
 
+const ENDPOINT = "https://en.wikipedia.org/w/api.php?";
+const FORMAT = "&format=json";
+const ORIGIN = "&origin=*";
+const ACTION = "&action=opensearch&search=";
+const WORD = "gundam";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +21,10 @@ class App extends Component {
   }
 
   handleSubmit(event) {
+    fetch(`${ENDPOINT}${ORIGIN}${FORMAT}${ACTION}${WORD}`)
+      .then(res => res.json())
+      .then();
+
     event.preventDefault();
   }
 
