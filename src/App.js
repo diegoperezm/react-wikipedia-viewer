@@ -11,8 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      link: "",
-      description: "",
+      articles: "",
       value: ""
     };
 
@@ -22,9 +21,23 @@ class App extends Component {
   }
 
   setData(data) {
+    const articles = [];
+
+    data[1].map((ele, index) => {
+      articles.push(
+        Object.assign(
+          { title: "", description: "", url: "" },
+          {
+            title: ele,
+            description: data[2][index],
+            url: data[3][index]
+          }
+        )
+      );
+    });
+
     this.setState({
-      link: data[3],
-      description: data[2]
+      articles
     });
   }
 
