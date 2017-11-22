@@ -23,7 +23,7 @@ class App extends Component {
   setData(data) {
     const articles = [];
 
-    data[1].map((ele, index) => {
+    data[1].forEach((ele, index) => {
       articles.push(
         Object.assign(
           { title: "", description: "", url: "" },
