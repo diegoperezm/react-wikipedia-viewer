@@ -53,6 +53,7 @@ class App extends Component {
   }
 
   render() {
+    const { articles } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -66,11 +67,14 @@ class App extends Component {
           <a href="https://en.wikipedia.org/wiki/Special:Random">Random</a>
         </form>
         <article>
-          <a href="">https://en.wikipedia.org/wiki/Gundam_model</a>
-          <p>
-            Gundam models are model kits depicting the vehicles and characters
-            of the fictional Gundam universe by Bandai.
-          </p>
+          {!articles
+            ? null
+            : articles.map(ele => (
+                <div>
+                  <a href={ele.url}>{ele.title}</a>
+                  <p>{ele.description}</p>
+                </div>
+              ))}
         </article>
       </div>
     );
