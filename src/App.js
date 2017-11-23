@@ -62,26 +62,34 @@ class App extends Component {
     const { articles } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="Search ..."
-          />
-          <input type="submit" value="submit" />
-          <a href="https://en.wikipedia.org/wiki/Special:Random">Random</a>
-        </form>
-        <article>
-          {!articles
-            ? null
-            : articles.map(ele => (
-                <div key={ele.id}>
-                  <a href={ele.url}>{ele.title}</a>
+        <header>
+          <h1>Wikipedia Viewer</h1>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+              placeholder="Search ..."
+            />
+            <input type="submit" value="submit" />
+            <a href="https://en.wikipedia.org/wiki/Special:Random">Random</a>
+          </form>
+        </header>
+        {!articles
+          ? null
+          : articles.map(ele => (
+              <article key={ele.id}>
+                <header>
+                  <h2>{ele.title}</h2>
+                </header>
+                <section>
                   <p>{ele.description}</p>
-                </div>
-              ))}
-        </article>
+                </section>
+                <footer>
+                  <a href={ele.url}>Wikipedia page</a>
+                </footer>
+              </article>
+            ))}
       </div>
     );
   }
