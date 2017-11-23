@@ -26,11 +26,12 @@ class App extends Component {
     data[1].forEach((ele, index) => {
       articles.push(
         Object.assign(
-          { title: "", description: "", url: "" },
+          { title: "", description: "", url: "", id: "" },
           {
             title: ele,
             description: data[2][index],
-            url: data[3][index]
+            url: data[3][index],
+            id: index.toString()
           }
         )
       );
@@ -70,7 +71,7 @@ class App extends Component {
           {!articles
             ? null
             : articles.map(ele => (
-                <div>
+                <div key={ele.id}>
                   <a href={ele.url}>{ele.title}</a>
                   <p>{ele.description}</p>
                 </div>
