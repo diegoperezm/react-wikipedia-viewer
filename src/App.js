@@ -5,7 +5,6 @@ const ENDPOINT = "https://en.wikipedia.org/w/api.php?";
 const FORMAT = "&format=json";
 const ORIGIN = "&origin=*";
 const ACTION = "&action=opensearch&search=";
-const WORD = "gundam";
 
 class App extends Component {
   constructor(props) {
