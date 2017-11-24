@@ -61,9 +61,9 @@ class App extends Component {
   render() {
     const { articles } = this.state;
     return (
-      <div>
-        <header>
-          <h1>Wikipedia Viewer</h1>
+      <div className="content">
+        <header className="content__header">
+          <h1 className="content__title">Wikipedia Viewer</h1>
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"
@@ -71,22 +71,30 @@ class App extends Component {
               onChange={this.handleChange}
               placeholder="Search ..."
             />
-            <input type="submit" value="submit" />
-            <a href="https://en.wikipedia.org/wiki/Special:Random">Random</a>
+            <input className="content__button" type="submit" value="submit" />
+
+            <a
+              href="https://en.wikipedia.org/wiki/Special:Random"
+              className="content__button content__link "
+            >
+              random
+            </a>
           </form>
         </header>
         {!articles
           ? null
           : articles.map(ele => (
-              <article key={ele.id}>
+              <article key={ele.id} className="content__article">
                 <header>
-                  <h2>{ele.title}</h2>
+                  <h2 className="content__title">{ele.title}</h2>
                 </header>
                 <section>
                   <p>{ele.description}</p>
                 </section>
-                <footer>
-                  <a href={ele.url}>Wikipedia page</a>
+                <footer className="content__footer">
+                  <a href={ele.url} className="content__link">
+                    Wikipedia page
+                  </a>
                 </footer>
               </article>
             ))}
